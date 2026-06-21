@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход в систему — L'ÉLIXIR</title>
+    <style>
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; background: #fafafa; padding: 50px; text-align: center; color: #1a1a1a; }
+        .form-container { background: white; padding: 40px; border-radius: 0; display: inline-block; border: 1px solid #eaeaea; width: 300px; }
+        h2 { font-weight: 300; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
+        input { display: block; margin: 15px auto; padding: 12px; width: 90%; border: 1px solid #eaeaea; font-size: 14px; }
+        button { width: 98%; padding: 12px; background: #1a1a1a; color: white; border: none; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; font-size: 12px; }
+        button:hover { background: #444; }
+        .flash-msg { color: #dc3545; font-size: 13px; margin-bottom: 15px; }
+        a { color: #888; text-decoration: none; font-size: 13px; }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Вход в клуб</h2>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="flash-msg">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <input type="text" name="username" placeholder="Ваш логин" required>
+            <input type="password" name="password" placeholder="Ваш пароль" required>
+            <button type="submit">Войти в кабинет</button>
+        </form>
+        <p style="margin-top: 20px;"><a href="/register">Нет аккаунта? Создать</a></p>
+    </div>
+</body>
+</html>
